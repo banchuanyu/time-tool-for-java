@@ -70,7 +70,7 @@ server.login.type | Shepher 登录类型 | CAS/LDAP | 目前仅支持 CAS 和 LD
     ```sh
     $sh script/dev-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#applicationproperties-参数说明)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](#applicationproperties-参数说明)）
 
 #### Docker 部署
 
@@ -83,4 +83,4 @@ server.login.type | Shepher 登录类型 | CAS/LDAP | 目前仅支持 CAS 和 LD
     ```sh
     $sh script/docker-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#applicationproperties-参数说明)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](#applicationproperties-参数说明)）
