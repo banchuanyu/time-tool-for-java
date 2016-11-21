@@ -31,7 +31,7 @@ Shepher 是一款 Zookeeper 的 web 管理工具。
 3. 运行脚本
 
     ```sh
-    $sh script/dev-build-start.sh
+    $ sh script/dev-build-start.sh
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
 
@@ -44,6 +44,6 @@ Shepher 是一款 Zookeeper 的 web 管理工具。
 3. 运行脚本，并等待 Docker 中的各个容器启动完成
 
     ```sh
-    $sh script/docker-build-start.sh
+    $ sh script/docker-build-start.sh
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
