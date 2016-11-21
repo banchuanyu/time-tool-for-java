@@ -1,54 +1,55 @@
 # Shepher
-Shepher is a web management tool of Zookeeper. [Readme 中文版](README-zh.md)
+Shepher 是一款 Zookeeper 的 web 管理工具。
+[Readme in English](README.md)。
 
-## Function comparison of similar products
-Product | Introduction | CURD operation of nodes | Snapshot management | Node modified Diff and Review function | Node operated mail notification | CAS and LDAP log | Authority management | Cascade delete | System status monitor
+## 同类产品功能对比
+产品 | 简介 | 节点的CURD 操作 | 快照管理 | 节点修改的 Diff 和 Review 功能 | 节点操作邮件通知 | CAS 和 LDAP 登录 | 权限管理 | 级联删除 | 系统状态监控
 ---|---|---|---|---|---|---|---|---|---
-Shepher | ZK management | √ | √ | √ | √ | √ | √ |   |  
-TaoKeeper | ZK cluster monitor and statement |   |   |   |   |   |   |   | √
-Zkdash | ZK management | √ | √ |   |   |   |   | √ |  
-Disconf | ZK management | √ | √ |   | √ |   | √ | √ | √
-XDiamond | Configuration center | √ |   |   |   | √ | √ |   | √
+Shepher | ZK 管理 | √ | √ | √ | √ | √ | √ |   |  
+TaoKeeper | ZK 集群监控与报表 |   |   |   |   |   |   |   | √
+Zkdash | ZK 管理 | √ | √ |   |   |   |   | √ |  
+Disconf | ZK 管理 | √ | √ |   | √ |   | √ | √ | √
+XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
-## Character
-- CRUD operation of ZK node
-- Snapshot management of ZK node
-- Modified Diff and Review function of ZK node
-- Mail operation notification of ZK node
-- Integrates CAS and LDAP log
-- Authority management, reference to [Authority management instruction](Docs/Authority.md)
+## 特性
+- ZK 节点的 CRUD 操作
+- ZK 节点的快照管理
+- ZK 节点修改的 Diff 和 Review 功能
+- ZK 节点操作邮件通知
+- 集成 CAS 和 LDAP 登录
+- 权限管理，参照 [权限管理说明](Docs/Authority-zh.md)
 
-## Environment requirement
+## 环境要求
 - JDK 1.8
 - Maven 3.2 +
 - MySQL 5.6
 
-## Configuration and use
+## 配置和使用
 
-### Basic configuration
+### 基本配置
 
-- Modify `INSERT INTO user VALUES (1,'youradmin',now());` in `db/init.sql`, change `youradmin` into your administrator user name
+- 修改 `db/init.sql` 中的 `INSERT INTO user VALUES (1,'youradmin',now());` ，将 `youradmin` 改为你的管理员用户名
 
-### Local compiling deployment
+### 本地编译部署
 
-1. Import `db/init.sql` in to MySQL
-2. Modify parameter configuration of `shepher-web/src/main/resources/application-dev.properties` according to [Parameter instruction](Docs/Parameter.md)
-3. Run the script
+1. 将 `db/init.sql` 导入到 MySQL
+2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
+3. 运行脚本
 
     ```sh
     $ sh script/dev-build-start.sh
     ```
-4. Visit `http://localhost:8089` or self defined service address in a browser
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
 
-### Docker deployment
+### Docker 部署
 
-MySQL and Zookeeper will be automatic integrated when Docker deployment is used, no self installation is needed, it is generally used for development and testing environment.
+使用 Docker 部署则自动集成 MySQL 和 Zookeeper，不需要再自行安装，一般用在开发测试环境。
 
-1. Install Docker, take Ubuntu system for example, install [docker engine](https://docs.docker.com/engine/installation/#installation) and [docker-compose](https://docs.docker.com/compose/install/)
-2. Modify parameter configuration of `shepher-web/src/main/resources/application-docker.properties` according to [Parameter instruction](Docs/Parameter.md)
-3. Run the script, waiting start of each container in Docker accomplish
+1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
+2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
+3. 运行脚本，并等待 Docker 中的各个容器启动完成
 
     ```sh
     $ sh script/docker-build-start.sh
     ```
-4. Visit `http://localhost:8089` or self defined service address in a browser
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
