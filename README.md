@@ -20,12 +20,6 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 - 集成 CAS 和 LDAP 登录
 - 权限管理，参照 [权限管理说明](Docs/Authority-zh.md)
 
-## 截图
-Add member
-![Add member](node-view.png)
-Apply permission
-![Apply permission](home.png)
-
 ## 环境要求
 - JDK 1.8
 - Maven 3.2 +
@@ -83,3 +77,7 @@ server.login.type | Shepher 登录类型 | CAS/LDAP | 目前仅支持 CAS 和 LD
     $sh script/docker-build-start.sh
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
+首页
+![Home](home.png)
+编辑节点
+![Node view](node-view.png)
