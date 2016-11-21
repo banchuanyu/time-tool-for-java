@@ -22,7 +22,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 截图
 Add member
-![Add member](view-node.png)
+![Add member](node-view.png)
 Apply permission
 ![Apply permission](home.png)
 
