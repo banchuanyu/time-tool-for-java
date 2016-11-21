@@ -22,9 +22,9 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 截图
 Add member
-![Add member](../raw/master/Docs/wiki/images/add-member.png)
+![Add member](http://git.n.xiaomi.com/banchuanyu/zooview/raw/master/Docs/wiki/images/add-member.png)
 Apply permission
-![Apply permission](../raw/master/Docs/wiki/images/apply-permission.png)
+![Apply permission](http://git.n.xiaomi.com/banchuanyu/zooview/raw/master/Docs/wiki/images/apply-permission.png)
 
 ## 环境要求
 - JDK 1.8
