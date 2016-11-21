@@ -34,7 +34,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 配置和使用
 
-#### application.properties参数说明
+#### application.properties 参数说明
 
 参数 | 含义 | 限定可选值 | 备注
 ---|---|---|---
@@ -64,23 +64,23 @@ server.login.type | Shepher 登录类型 | CAS/LDAP | 目前仅支持 CAS 和 LD
 #### 本地编译部署
 
 1. 将 `db/init.sql` 导入到 MySQL
-2. 参照 [参数说明](#application.properties参数说明) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
+2. 参照 [参数说明](#applicationproperties-参数说明) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
 3. 运行脚本
 
     ```sh
     $sh script/dev-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#application.properties参数说明)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#applicationproperties-参数说明)）
 
 #### Docker 部署
 
 使用 Docker 部署则自动集成 MySQL 和 Zookeeper，不需要再自行安装，一般用在开发测试环境。
 
 1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
-2. 参照 [参数说明](#application.properties参数说明) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
+2. 参照 [参数说明](#applicationproperties-参数说明) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
 3. 运行脚本，并等待 Docker 中的各个容器启动完成
 
     ```sh
     $sh script/docker-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#application.properties参数说明)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址（参照 [参数说明](#applicationproperties-参数说明)）
