@@ -69,13 +69,14 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 线上部署的步骤跟本地编译部署类似，主要有几个配置需要重点注意。
 
 1. 将 `db/init.sql` 导入到 MySQL
-2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [application.properties 参数说明](#applicationproperties-参数说明) 修改参数，并将 `shepher-web/src/main/resources/application.properties` 中的 `spring.profiles.active` 修改为 `online`
-3. 在 Shepher 根目录下运行
+2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [application.properties 参数说明](#applicationproperties-参数说明) 添加和修改配置，并将 `shepher-web/src/main/resources/application.properties` 中的 `spring.profiles.active` 设置为 `online`
+3. 在 Shepher 根目录下运行命令
 
     ```sh
     $ mvn clean package
     ```
-4. 将 `shepher-web/target/shepher-1.0.jar` 拷贝到线上，然后运行
+4. 将 `shepher-web/target/shepher-1.0.jar` 拷贝到线上，然后运行命令
+
     ```sh
     $ java -jar shepher-1.0.jar --spring.profiles.active=online
     ```
