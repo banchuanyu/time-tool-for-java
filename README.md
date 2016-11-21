@@ -1,5 +1,5 @@
-Shepher
-======
+# Shepher
+
 Shepher 是一款 Zookeeper 的 web 管理工具。[Readme in English](README.md)
 
 ## 特性
@@ -47,7 +47,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 3. 运行脚本
 
     ```sh
-    $sh script/dev-build-start.sh
+    $ sh script/dev-build-start.sh
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [application.properties 参数说明](#applicationproperties-参数说明)）
 
@@ -60,7 +60,24 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 3. 运行脚本，并等待 Docker 中的各个容器启动完成
 
     ```sh
-    $sh script/docker-build-start.sh
+    $ sh script/docker-build-start.sh
+    ```
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [application.properties 参数说明](#applicationproperties-参数说明)）
+
+#### 线上部署
+
+线上部署的步骤跟本地编译部署类似，主要有几个配置需要重点注意。
+
+1. 将 `db/init.sql` 导入到 MySQL
+2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [application.properties 参数说明](#applicationproperties-参数说明) 修改参数，并将 `shepher-web/src/main/resources/application.properties` 中的 `spring.profiles.active` 修改为 `online`
+3. 在 Shepher 根目录下运行
+
+    ```sh
+    $ mvn clean package
+    ```
+4. 将 `shepher-web/target/shepher-1.0.jar` 拷贝到线上，然后运行
+    ```sh
+    $ java -jar shepher-1.0.jar --spring.profiles.active=online
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [application.properties 参数说明](#applicationproperties-参数说明)）
 
