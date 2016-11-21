@@ -1,49 +1,78 @@
-# Shepher
-Shepher 是一款 Zookeeper 的 web 管理工具。
+# 权限管理说明
 
-## 链接
-- [Readme in English](README.md)
-- [同类产品功能对比](Docs/Similar-zh.md)
+## 设计思路
 
-## 特性
-- ZK 节点的 CRUD 操作
-- ZK 节点的快照管理
-- ZK 节点修改的 Diff 和 Review 功能
-- ZK 节点操作邮件通知
-- 集成 CAS 和 LDAP 登录
-- 权限管理，参照 [权限管理说明](Docs/Authority-zh.md)
+与常见的管理员统一管理所有权限不同，本项目将权限以小组为单位授权，采用管理员管理小组，小组的组长管理组内成员的方式。这种分级的权限管理模式大大减少了管理员的审核负担，组内自治也增加了灵活性。
 
-## 环境要求
-- JDK 1.8
-- Maven 3.2 +
-- MySQL 5.6
+权限管理结构图：
+其中，zookeeper的权限以节点为单位，小组向管理员申请权限，由超级管理员负责审核和授权。小组成员由用户组成，用户可以选择创建新的小组或者加入已有的小组。
 
-## 配置和使用
+![权限管理结构图](../raw/master/Docs/images/permission-design.png)
 
-#### 基本配置
+## 功能说明
 
-- 修改 `db/init.sql` 中的 `INSERT INTO user VALUES (1,'youradmin',now());` ，将 `youradmin` 改为你的管理员用户名
+### 超级管理员
 
-#### 本地编译部署
+超级管理员都属于一个特殊的小组 -- admin，需要负责如下管理：
 
-1. 将 `db/init.sql` 导入到 MySQL
-2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
-3. 运行脚本
+- 审核小组的权限申请（同意/拒绝）
+- 给小组授予某个节点的权限
 
-    ```sh
-    $ sh script/dev-build-start.sh
-    ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
+### 权限
 
-#### Docker 部署
+权限是以节点为粒度划分的，是以小组为单位下放的。
 
-使用 Docker 部署则自动集成 MySQL 和 Zookeeper，不需要再自行安装，一般用在开发测试环境。
+- 节点权限：每个节点由集群和路径唯一确定，拥有父节点权限即拥有该节点的子节点权限
 
-1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
-2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
-3. 运行脚本，并等待 Docker 中的各个容器启动完成
+### 小组
 
-    ```sh
-    $ sh script/docker-build-start.sh
-    ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的服务地址
+#### 小组角色
+
+小组成员分为不同的角色，目前有三种角色：
+
+- master：小组的管理者。可以管理组内成员，向管理员申请权限；拥有节点的增、删、改权限
+- developer：开发者。拥有节点的增改权限，没有删除权限
+- member：暂时同developer
+
+一个小组可以拥有多个节点的权限，同一小组的所有成员共享节点权限。
+小组成员均可增改该小组拥有权限的节点，但只有小组的 master 能够删除节点。
+
+#### 小组管理
+
+- 处理用户的入组申请
+- 添加/删除小组成员
+- 更改小组成员的角色
+- 申请新的节点权限
+
+
+### 用户
+
+用户在操作节点前需要申请权限，主要有两种方式：
+
+- 新建小组：用户在新建小组的时候即会对当前节点发出权限申请，待管理员审核通过即可
+- 申请入组：用户申请加入拥有某个节点权限的任意小组，等待小组 master 同意即可
+
+## 使用方法
+
+本部分主要介绍系统功能入口，并附上效果截图。
+
+域名和端口号为 serverName:serverPort，下文只给出相对链接。
+
+### 超级管理员
+
+- 集群管理： `/admin`
+
+- 权限管理： `/permission`
+
+### 小组管理
+
+- 该用户所属小组列表： `/teams`
+
+- 小组成员管理： `/teams/{teamId}/manage`
+
+- 小组权限管理： `/teams/{teamId}/permission`
+
+
+### 用户申请
+
+- 用户申请权限： `/teams/apply?path=/zookeeper&cluster=local_test`
