@@ -39,7 +39,11 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 - 修改 `db/init.sql` 中的 `INSERT INTO user VALUES (1,'youradmin',now());` ，将 `youradmin` 改为你的管理员用户名
 - 参照 [参数说明](Docs/Parameter-zh.md)，设置 `shepher-web/src/main/resources` 目录下的参数配置。如果使用 CAS 登录，则需要修改 CAS 相关的配置，并且将 `server.login.type` 设置为 `CAS`；如果使用 LDAP 登录，则需要修改 LDAP 相关的配置，并且将 `server.login.type` 设置为 `LDAP`
 
-### 本地编译部署
+### 开发环境部署
+
+开发环境部署包括本地编译部署和 Docker 部署两种方式，用户可以根据实际情况选择一种部署方式。
+
+#### 本地编译
 
 1. 将 `db/init.sql` 导入到 MySQL
 2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
@@ -50,7 +54,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
 
-### Docker 部署
+#### Docker
 
 使用 Docker 部署则自动集成 MySQL 和 Zookeeper，并且自动将 `db/init.sql` 导入MySQL中，不需要自行安装，一般用在开发测试环境。
 
