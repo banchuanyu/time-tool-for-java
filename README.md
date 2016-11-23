@@ -37,31 +37,31 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 ### 基本配置
 
 - 修改 `db/init.sql` 中的 `INSERT INTO user VALUES (1,'youradmin',now());` ，将 `youradmin` 改为你的管理员用户名
-- 参照 [application.properties 参数说明](Docs/Parameter-zh.md)，设置 `shepher-web/src/main/resources` 目录下的参数配置。如果使用 CAS 登录，则需要修改 CAS 相关的配置，并且将 `server.login.type` 设置为 `CAS`；如果使用 LDAP 登录，则需要修改 LDAP 相关的配置，并且将 `server.login.type` 设置为 `LDAP`
+- 参照 [参数说明](Docs/Parameter-zh.md)，设置 `shepher-web/src/main/resources` 目录下的参数配置。如果使用 CAS 登录，则需要修改 CAS 相关的配置，并且将 `server.login.type` 设置为 `CAS`；如果使用 LDAP 登录，则需要修改 LDAP 相关的配置，并且将 `server.login.type` 设置为 `LDAP`
 
 ### 本地编译部署
 
 1. 将 `db/init.sql` 导入到 MySQL
-2. 参照 [application.properties 参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
+2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
 3. 运行脚本
 
     ```sh
     $ sh script/dev-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [application.properties 参数说明](Docs/Parameter-zh.md)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
 
 ### Docker 部署
 
 使用 Docker 部署则自动集成 MySQL 和 Zookeeper，并且自动将 `db/init.sql` 导入MySQL中，不需要自行安装，一般用在开发测试环境。
 
 1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
-2. 参照 [application.properties 参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
+2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
 3. 运行脚本，并等待 Docker 中的各个容器启动完成
 
     ```sh
     $ sh script/docker-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [application.properties 参数说明](Docs/Parameter-zh.md)）
+4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
 
 ### 线上部署
 
@@ -69,7 +69,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 另外，由于公司内部的邮件服务较为封闭，在线上使用中需要自己实现 `CustomMailSender` 类，并在 `shepher-web/src/main/resources/application.properties` 中设置 `mail.sender=customMailSender`，以便 Shepher 服务可以即时邮件通知到用户
 
 1. 将 `db/init.sql` 导入到 MySQL
-2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [application.properties 参数说明](Docs/Parameter-zh.md) 添加和修改配置，并将 `shepher-web/src/main/resources/application.properties` 中的 `spring.profiles.active` 设置为 `online`
+2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [参数说明](Docs/Parameter-zh.md) 添加和修改配置
 3. 在 Shepher 根目录下运行命令
 
     ```sh
@@ -80,4 +80,4 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
     ```sh
     $ java -jar shepher-1.0.jar --spring.profiles.active=online
     ```
-4. 在浏览器中访问自定义的 `server.url` （参照 [application.properties 参数说明](#applicationproperties-参数说明)）
+4. 在浏览器中访问自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
