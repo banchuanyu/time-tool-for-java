@@ -56,7 +56,7 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 #### Docker 部署
 
-使用 Docker 部署则自动集成 MySQL 和 Zookeeper，并且自动将 `db/init.sql` 导入MySQL中，不需要自行安装，一般用在开发测试环境。
+使用 Docker 部署则自动集成 MySQL 和 Zookeeper，并且自动将 `db/init.sql` 导入MySQL中，不需要自行安装。
 
 1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
 2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
