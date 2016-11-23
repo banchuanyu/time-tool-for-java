@@ -67,7 +67,8 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 #### 线上部署
 
-线上部署的步骤跟本地编译部署类似，主要注意对 `shepher-web/src/main/resources/application.properties` 的修改。
+线上部署的步骤跟本地编译部署类似，主要注意对数据源、CAS/LDAP 以及域名的设置。
+另外，由于公司内部的邮件服务较为封闭，在线上使用中需要自己实现 `CustomMailSender` 类，并在 `shepher-web/src/main/resources/application.properties` 中设置 `mail.sender=customMailSender`，以便 Shepher 服务可以即时邮件通知到用户
 
 1. 将 `db/init.sql` 导入到 MySQL
 2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [application.properties 参数说明](Docs/Parameter-zh.md) 添加和修改配置，并将 `shepher-web/src/main/resources/application.properties` 中的 `spring.profiles.active` 设置为 `online`
