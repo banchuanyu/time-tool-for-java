@@ -63,10 +63,9 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
     ```
 4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
 
-### 线上部署
+### 生产环境部署
 
-线上部署的步骤跟本地编译部署类似，主要注意对数据源、CAS/LDAP 以及域名的设置。
-另外，由于公司内部的邮件服务较为封闭，在线上使用中需要自己实现 `CustomMailSender` 类，并在 `shepher-web/src/main/resources/application.properties` 中设置 `mail.sender=customMailSender`，以便 Shepher 服务可以即时邮件通知到用户
+生产环境部署的步骤跟本地编译部署类似，主要注意对数据源、CAS/LDAP 以及域名的设置。另外，由于各个公司内部的邮件服务较为封闭，在线上使用中需要自己实现 `CustomMailSender` 类，并在 `shepher-web/src/main/resources/application.properties` 中设置 `mail.sender=customMailSender`，以便 Shepher 服务可以正常使用邮件服务。
 
 1. 将 `db/init.sql` 导入到 MySQL
 2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [参数说明](Docs/Parameter-zh.md) 添加和修改配置
