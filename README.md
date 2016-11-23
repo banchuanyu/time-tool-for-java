@@ -22,10 +22,10 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 系统截图
 - 首页
-![Home](Docs/images/home.png)
+![Home](home.png)
 
 - 节点编辑
-![Node view](Docs/images/node-view.png)
+![Node view](node-view.png)
 
 ## 安装
 
