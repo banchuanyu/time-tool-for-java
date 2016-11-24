@@ -38,7 +38,7 @@ XDiamond | Configuration center | √ |   |   |   | √ | √ |   | √
 - Modify `INSERT INTO user VALUES (1,'youradmin',now());` in `db/init.sql`, change `youradmin` into your administrator user name
 - According to [Parameter instruction](Docs/Parameter.md), modify parameter configuration under the directory `shepher-web/src/main/resources`. If you are using a CAS login, you need to modify the CAS-related configuration and set the `server.login.type` to `CAS`; If you log in with LDAP, you will need to modify the LDAP-related configuration and set `server.login.type` to `LDAP`
 
-### Development Environment Deployment
+### Development environment deployment
 
 Development environment deployment includes local compilation deployment and Docker deployment, you can choose a deployment based on usage.
 
@@ -68,7 +68,7 @@ MySQL and Zookeeper will be automatic integrated when Docker deployment is used,
 
 ### Production environment deployment
 
-The steps for production environment deployment is similar to local compiling deployment, but pay attention to the setting of data sources, CAS/LDAP, and domain names. In addition, because each company's internal mail service is relatively closed, you need to implement your own `CustomMailSender` class, and set `mail.sender=customMailSender` in` shepher-web/src/main/resources/application.properties`, so that Shepher can use the mail service normally.
+The steps for production environment deployment is similar to local compiling deployment, but pay attention to the setting of data sources, CAS/LDAP and domain names. In addition, because each company's internal mail service is relatively closed, you need to implement your own `CustomMailSender` class, and set `mail.sender=customMailSender` in` shepher-web/src/main/resources/application.properties`, so that Shepher can use the mail service normally.
 
 1. Import `db/init.sql` into MySQL
 2. Create the file `shepher-web/src/main/resources/application-online.properties`, and modify the configuration according to [Parameter instruction](Docs/Parameter.md)
