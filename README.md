@@ -1,86 +1,85 @@
 # Shepher
 
-Shepher 是一款 Zookeeper 的管理工具。在小米公司，我们用它作为配置管理中心。[Readme in English](README.md)
+Shepher is a management tool of Zookeeper. In Xiaomi, we use it as the configuration management center. [Readme 中文版](README-zh.md)
 
-## 特性
-- ZK 节点的 CRUD 操作
-- ZK 节点的快照管理
-- ZK 节点修改的 Diff 和 Review 功能
-- ZK 节点操作邮件通知
-- 集成 CAS 和 LDAP 登录
-- 权限管理，参照 [权限管理说明](Docs/Authority-zh.md)
+## Character
+- CRUD operation of ZK node
+- Snapshot management of ZK node
+- Modified Diff and Review function of ZK node
+- Mail operation notification of ZK node
+- Integrates CAS and LDAP log
+- Authority management, reference to [Authority management instruction](Docs/Authority.md)
 
-## 同类产品功能对比
-
-产品 | 简介 | 节点的CURD 操作 | 快照管理 | 节点修改的 Diff 和 Review 功能 | 节点操作邮件通知 | CAS 和 LDAP 登录 | 权限管理 | 级联删除 | 系统状态监控
+## Function comparison of similar products
+Product | Introduction | CURD operation of nodes | Snapshot management | Node modified Diff and Review function | Node operated mail notification | CAS and LDAP log | Authority management | Cascade delete | System status monitor
 ---|---|---|---|---|---|---|---|---|---
-Shepher | ZK 管理 | √ | √ | √ | √ | √ | √ |   |  
-TaoKeeper | ZK 集群监控与报表 |   |   |   |   |   |   |   | √
-Zkdash | ZK 管理 | √ | √ |   |   |   |   | √ |  
-Disconf | ZK 管理 | √ | √ |   | √ |   | √ | √ | √
-XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
+Shepher | ZK management | √ | √ | √ | √ | √ | √ |   |  
+TaoKeeper | ZK cluster monitor and statement |   |   |   |   |   |   |   | √
+Zkdash | ZK management | √ | √ |   |   |   |   | √ |  
+Disconf | ZK management | √ | √ |   | √ |   | √ | √ | √
+XDiamond | Configuration center | √ |   |   |   | √ | √ |   | √
 
-## 系统截图
-- 首页
+## Screenshots
+- Home
 ![Home](../raw/master/Docs/images/home.png)
 
-- 节点查看
+- Node view
 ![Node view](../raw/master/Docs/images/node-view.png)
 
-## 安装
+## Installation
 
-### 环境要求
+### Environment requirements
 - JDK 1.8
 - Maven 3.2 +
 - MySQL 5.6
 
-### 基本配置
+### Basic configuration
 
-- 修改 `db/init.sql` 中的 `INSERT INTO user VALUES (1,'youradmin',now());` ，将 `youradmin` 改为你的管理员用户名
-- 参照 [参数说明](Docs/Parameter-zh.md)，设置 `shepher-web/src/main/resources` 目录下的参数配置。如果使用 CAS 登录，则需要修改 CAS 相关的配置，并且将 `server.login.type` 设置为 `CAS`；如果使用 LDAP 登录，则需要修改 LDAP 相关的配置，并且将 `server.login.type` 设置为 `LDAP`
+- Modify `INSERT INTO user VALUES (1,'youradmin',now());` in `db/init.sql`, change `youradmin` into your administrator user name
+- According to [Parameter instruction](Docs/Parameter.md), modify parameter configuration under the directory `shepher-web/src/main/resources`. If you are using a CAS login, you need to modify the CAS-related configuration and set the `server.login.type` to `CAS`; If you log in with LDAP, you will need to modify the LDAP-related configuration and set `server.login.type` to `LDAP`
 
-### 开发环境部署
+### Development Environment Deployment
 
-开发环境部署包括本地编译部署和 Docker 部署两种方式，用户可以根据使用习惯选择一种部署方式。
+Development environment deployment includes local compilation deployment and Docker deployment, you can choose a deployment based on usage.
 
-#### 本地编译部署
+#### Local compiling deployment
 
-1. 将 `db/init.sql` 导入到 MySQL
-2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-dev.properties` 的参数配置
-3. 运行脚本
+1. Import `db/init.sql` in to MySQL
+2. Modify parameter configuration of `shepher-web/src/main/resources/application-dev.properties` according to [Parameter instruction](Docs/Parameter.md)
+3. Run the script
 
     ```sh
     $ sh script/dev-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
+4. Visit `http://localhost:8089` or self defined `server.url` (Reference to [Parameter instruction](Docs/Parameter.md))
 
-#### Docker 部署
+#### Docker deployment
 
-使用 Docker 部署则自动集成 MySQL 和 Zookeeper，并且自动将 `db/init.sql` 导入MySQL中，不需要自行安装。
+MySQL and Zookeeper will be automatic integrated when Docker deployment is used, And automatically import `db/init.sql` into MySQL, no self installation is needed.
 
-1. 安装 Docker，以 Ubuntu 系统为例，安装 [docker engine](https://docs.docker.com/engine/installation/#installation) 和 [docker-compose](https://docs.docker.com/compose/install/)
-2. 参照 [参数说明](Docs/Parameter-zh.md) 修改 `shepher-web/src/main/resources/application-docker.properties` 的参数配置
-3. 运行脚本，并等待 Docker 中的各个容器启动完成
+1. Install Docker, take Ubuntu system for example, install [docker engine](https://docs.docker.com/engine/installation/#installation) and [docker-compose](https://docs.docker.com/compose/install/)
+2. Modify parameter configuration of `shepher-web/src/main/resources/application-docker.properties` according to [Parameter instruction](Docs/Parameter.md)
+3. Run the script, waiting start of each container in Docker accomplish
 
     ```sh
     $ sh script/docker-build-start.sh
     ```
-4. 在浏览器中访问 `http://localhost:8089` 或自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
+4. Visit `http://localhost:8089` or self defined `server.url` (Reference to [Parameter instruction](Docs/Parameter.md))
 
-### 生产环境部署
+### Production environment deployment
 
-生产环境部署的步骤跟本地编译部署类似，主要注意对数据源、CAS/LDAP 以及域名的设置。另外，由于各个公司内部的邮件服务较为封闭，在线上使用中需要自己实现 `CustomMailSender` 类，并在 `shepher-web/src/main/resources/application.properties` 中设置 `mail.sender=customMailSender`，以便 Shepher 服务可以正常使用邮件服务。
+The steps for production environment deployment is similar to local compiling deployment, but pay attention to the setting of data sources, CAS/LDAP, and domain names. In addition, because each company's internal mail service is relatively closed, you need to implement your own `CustomMailSender` class, and set `mail.sender=customMailSender` in` shepher-web/src/main/resources/application.properties`, so that Shepher can use the mail service normally.
 
-1. 将 `db/init.sql` 导入到 MySQL
-2. 创建 `shepher-web/src/main/resources/application-online.properties` 文件，参照 [参数说明](Docs/Parameter-zh.md) 添加和修改配置
-3. 在 Shepher 根目录下运行命令
+1. Import `db/init.sql` into MySQL
+2. Create the file `shepher-web/src/main/resources/application-online.properties`, and modify the configuration according to [Parameter instruction](Docs/Parameter.md)
+3. Run the command in the Shepher root directory
 
     ```sh
     $ mvn clean package
     ```
-4. 将 `shepher-web/target/shepher-1.0.jar` 拷贝到线上，然后运行命令
+4. Copy `shepher-web/target/shepher-1.0.jar` to the production environment, and run the command
 
     ```sh
     $ java -jar shepher-1.0.jar --spring.profiles.active=online
     ```
-4. 在浏览器中访问自定义的 `server.url` （参照 [参数说明](Docs/Parameter-zh.md)）
+4. Visit self defined `server.url` (Reference to [Parameter instruction](Docs/Parameter.md))
