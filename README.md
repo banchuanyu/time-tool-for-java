@@ -1,6 +1,6 @@
 # Shepher
 
-Shepher 是一款 Zookeeper 的 web 管理工具。[Readme in English](README.md)
+Shepher 是一款 Zookeeper 的管理工具。在小米公司，我们用它作为配置管理中心。[Readme in English](README.md)
 
 ## 特性
 - ZK 节点的 CRUD 操作
@@ -22,10 +22,10 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 系统截图
 - 首页
-![Home](home.png)
+![Home](../raw/master/Docs/images/home.png)
 
-- 节点编辑
-![Node view](node-view.png)
+- 节点查看
+![Node view](../raw/master/Docs/images/node-view.png)
 
 ## 安装
 
